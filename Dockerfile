@@ -14,6 +14,7 @@ RUN pnpm install --frozen-lockfile
 
 COPY api/ ./api/
 COPY packages/ ./packages/
+COPY cookies.json /app/cookies.json
 
 RUN git config --global user.email "cobalt@railway.app" && \
     git config --global user.name "Cobalt" && \
@@ -26,8 +27,6 @@ WORKDIR /app/api
 
 EXPOSE 9000
 
-ENV GIT_COMMIT=railway
-ENV GIT_REMOTE=https://github.com/imputnet/cobalt.git
-COPY cookies.json /app/cookies.json
+ENV COOKIE_PATH=/app/cookies.json
 
 CMD ["node", "src/cobalt.js"]
