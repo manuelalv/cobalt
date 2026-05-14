@@ -1,6 +1,6 @@
 FROM node:22-alpine
 
-RUN apk add --no-cache python3 alpine-sdk
+RUN apk add --no-cache python3 alpine-sdk git
 
 RUN npm install -g pnpm
 
@@ -14,6 +14,8 @@ RUN pnpm install --frozen-lockfile
 
 COPY api/ ./api/
 COPY packages/ ./packages/
+
+RUN git init && git commit --allow-empty -m "init"
 
 WORKDIR /app/api
 
