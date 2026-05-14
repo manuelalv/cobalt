@@ -28,5 +28,6 @@ EXPOSE 9000
 
 ENV GIT_COMMIT=railway
 ENV GIT_REMOTE=https://github.com/imputnet/cobalt.git
+COPY cookies.json /app/cookies.json
 
 CMD ["node", "src/cobalt.js"]
