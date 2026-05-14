@@ -13,9 +13,12 @@ COPY packages/ ./packages/
 RUN pnpm install --frozen-lockfile
 
 COPY api/ ./api/
+COPY packages/ ./packages/
 
 WORKDIR /app/api
 
+RUN pnpm build 2>/dev/null || true
+
 EXPOSE 9000
 
-CMD ["node", "src/index.js"]
+CMD ["node", "-e", "require('fs').readdirSync('.').forEach(f=>console.log(f))"]
