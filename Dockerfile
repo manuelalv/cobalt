@@ -15,7 +15,11 @@ RUN pnpm install --frozen-lockfile
 COPY api/ ./api/
 COPY packages/ ./packages/
 
-RUN git init && git commit --allow-empty -m "init"
+RUN git config --global user.email "cobalt@railway.app" && \
+    git config --global user.name "Cobalt" && \
+    git init && \
+    git add -A && \
+    git commit --allow-empty -m "init"
 
 WORKDIR /app/api
 
