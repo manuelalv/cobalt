@@ -17,8 +17,6 @@ COPY packages/ ./packages/
 
 WORKDIR /app/api
 
-RUN pnpm build 2>/dev/null || true
-
 EXPOSE 9000
 
-CMD ["node", "-e", "require('fs').readdirSync('.').forEach(f=>console.log(f))"]
+CMD ["node", "src/cobalt.js"]
