@@ -18,11 +18,15 @@ COPY packages/ ./packages/
 RUN git config --global user.email "cobalt@railway.app" && \
     git config --global user.name "Cobalt" && \
     git init && \
+    git remote add origin https://github.com/imputnet/cobalt.git && \
     git add -A && \
     git commit --allow-empty -m "init"
 
 WORKDIR /app/api
 
 EXPOSE 9000
+
+ENV GIT_COMMIT=railway
+ENV GIT_REMOTE=https://github.com/imputnet/cobalt.git
 
 CMD ["node", "src/cobalt.js"]
