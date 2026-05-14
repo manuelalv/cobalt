@@ -1,5 +1,7 @@
 FROM node:20-alpine
 
+RUN apk add --no-cache python3 alpine-sdk
+
 RUN npm install -g pnpm
 
 WORKDIR /app
