@@ -14,7 +14,7 @@ RUN pnpm install --frozen-lockfile
 
 COPY api/ ./api/
 COPY packages/ ./packages/
-COPY cookies.json /app/cookies.json
+C
 
 RUN git config --global user.email "cobalt@railway.app" && \
     git config --global user.name "Cobalt" && \
