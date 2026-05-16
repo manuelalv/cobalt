@@ -1,0 +1,7 @@
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'us-central1-docker.pkg.dev/gen-lang-client-0650018595/euphoria-repo/cobalt:latest', '.']
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'us-central1-docker.pkg.dev/gen-lang-client-0650018595/euphoria-repo/cobalt:latest']
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  args: ['gcloud', 'run', 'deploy', 'cobalt', '--image', 'us-central1-docker.pkg.dev/gen-lang-client-0650018595/euphoria-repo/cobalt:latest', '--region', 'us-central1', '--quiet']
